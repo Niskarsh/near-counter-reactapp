@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/near-counter/static/css/main.f855e6bc.css",
+    "main.js": "/near-counter/static/js/main.0fe68793.js",
+    "static/js/453.728390d8.chunk.js": "/near-counter/static/js/453.728390d8.chunk.js",
+    "static/media/logo.svg": "/near-counter/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/near-counter/index.html",
+    "main.f855e6bc.css.map": "/near-counter/static/css/main.f855e6bc.css.map",
+    "main.0fe68793.js.map": "/near-counter/static/js/main.0fe68793.js.map",
+    "453.728390d8.chunk.js.map": "/near-counter/static/js/453.728390d8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.0fe68793.js"
+  ]
+}
