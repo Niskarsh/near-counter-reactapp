@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@near-wallet-selector/core": "^8.9.5",
+    "@near-wallet-selector/meteor-wallet": "^8.9.5",
+    "@near-wallet-selector/modal-ui": "^8.9.5",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
