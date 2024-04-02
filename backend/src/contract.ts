@@ -12,13 +12,13 @@ class Counter {
     }
 
     @call({})
-    increment({ step = 1 }): void {
+    increment({ step }: { step: number }): void {
         this.counter += step;
         near.log(`New counter`, this.counter)
     }
 
     @call({})
-    decrement({ step = 1 }): void {
+    decrement({ step }: { step: number }): void {
         this.counter -= step;
         near.log(`New counter`, this.counter)
     }
