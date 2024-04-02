@@ -7,6 +7,7 @@
     "@near-wallet-selector/core": "^8.9.5",
     "@near-wallet-selector/meteor-wallet": "^8.9.5",
     "@near-wallet-selector/modal-ui": "^8.9.5",
+    "@near-wallet-selector/my-near-wallet": "^8.9.5",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
     "@svgr/webpack": "^5.5.0",
     "@testing-library/jest-dom": "^5.17.0",

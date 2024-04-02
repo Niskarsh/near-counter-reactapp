@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { setupWalletSelector } from "@near-wallet-selector/core";
-import { setupModal } from "@near-wallet-selector/modal-ui";
-import { setupMeteorWallet } from "@near-wallet-selector/meteor-wallet";
-import * as nearAPI from "near-api-js";
 import './App.css';
 import "@near-wallet-selector/modal-ui/styles.css"
+import { Wallet } from './components/near-wallet';
 
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
@@ -13,8 +10,9 @@ class App extends Component {
     counter: 0,
     CONTRACT_ADDRESS: 'niskarsh31.testnet',
     NETWORK: 'testnet',
-    walletModalVisible: false,
-    walletModal: {},
+    wallet: {},
+    walletSignedIn: false,
+    caller: 'Sign in to access counT'
   };
 
   toggleWalletModalVisbibility = () => {
@@ -22,60 +20,60 @@ class App extends Component {
     this.setState({ walletModalVisible: !visible });
   }
 
-  async componentDidMount() {
-    // const { keyStores, connect, WalletConnection } = nearAPI;
-    // const myKeyStore = new keyStores.BrowserLocalStorageKeyStore();
-
-    // const connectionConfig = {
-    //   networkId: "testnet",
-    //   keyStore: myKeyStore, // first create a key store
-    //   nodeUrl: "https://rpc.testnet.near.org",
-    //   walletUrl: "https://wallet.meteorwallet.app",
-    //   helperUrl: "https://helper.testnet.near.org",
-    //   explorerUrl: "https://testnet.nearblocks.io",
-    // };
-    // const nearConnection = await connect(connectionConfig);
-    // // console.log(nearConnection)
-    // const walletConnection = new WalletConnection(nearConnection, 'check');
-    // console.log(walletConnection.isSignedIn())
-    // walletConnection.requestSignIn({
-    //   contractId: "niskarsh31.testnet",
-    //   // methodNames: [], // optional
-    //   successUrl: "https://docs.near.org/tools/near-api-js/wallet", // optional redirect URL on success
-    //   // failureUrl: "https://docs.near.org/tools/near-api-js/wallet", // optional redirect URL on failure
-    // });
-    // console.log("called")
-    const selector = await setupWalletSelector({
-      network: "testnet",
-      modules: [setupMeteorWallet()],
+  walletSignIn = async () => {
+    const { CONTRACT_ADDRESS, NETWORK } = this.state;
+    const wallet = new Wallet({
+      createAccessKeyFor: CONTRACT_ADDRESS,
+      network: NETWORK,
     });
-    const wallet = await selector.wallet('meteor-wallet');
-    console.log(wallet)
-const accounts = await wallet.signIn({ contractId: "niskarsh31.testnet" });
-console.log(wallet, accounts)
-    // // const wallet = await selector.wallet("meteor-wallet");
-    // // console.log(selector, wallet);
-    // const modal = setupModal(selector, {
-    //   contractId: "niskarsh31.testnet",
-    // });
-    // this.setState({ walletModal: modal });
+    this.setState({ wallet })
+    console.log(wallet.accountId)
+    let isSignedIn = await wallet.startUp();
+    if (!isSignedIn) {
+      let sm = await wallet.signIn();
+      console.log(sm)
+    }
+    console.log(wallet.accountId)
+  };
 
-    // modal.show(this.state.walletModalVisible);
+  walletSignOut = async () => {
+    const { wallet } = this.state;
+    if (Object.keys(wallet).length) {
+      let isSignedIn = await wallet.startUp();
+      if (isSignedIn) {
+        wallet.signOut();
+      }
+    }
+        
+    this.setState({ wallet: {} });
+  }
+
+  async componentDidMount() {
+    let { wallet, CONTRACT_ADDRESS, NETWORK } = this.state;
+    if (!(Object.keys(wallet).length)) {
+      wallet = new Wallet({
+        createAccessKeyFor: CONTRACT_ADDRESS,
+        network: NETWORK,
+      });
+    } 
+    let isSignedIn = await wallet.startUp();
+    this.setState({ wallet, walletSignedIn: isSignedIn,
+      caller: isSignedIn ? `Welcome: ${wallet.accountId}`: 'Sign in to access counT'
+    });
   }
 
   render() {
-    let { counter, walletModal, walletModalVisible } = this.state;
+    let { counter, walletSignedIn, caller } = this.state;
     return (
       <div className="App">
-        <h1>This counter lives in the NEAR blockchain!</h1>
+        <h1>This counter lives in the NEAR blockchain! [TESTNET]</h1>
+        <h2>{ caller }</h2>
+        
+        <button onClick={this.walletSignIn} hidden={walletSignedIn} >Connect wallet</button>
+        <button onClick={this.walletSignOut} hidden={!walletSignedIn}>Disconnect wallet</button>
         <h2>Counter: {counter}</h2>
         <button> Increase </button>
-        <br />
-        <br />
         <button> Decrease </button>
-        <br />
-        <br />
-        <button onClick={this.toggleWalletModalVisbibility}>Connect wallet</button>
         {/* <div>{walletModal.show? walletModal.show(walletModalVisible): null}</div> */}
       </div>
     )
