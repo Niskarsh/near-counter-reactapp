@@ -1,0 +1,16 @@
+{
+  "name": "near-counter-be",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "near-sdk-js build src/contract.ts build/counter.wasm"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "near-sdk-js": "^1.0.0"
+  }
+}
