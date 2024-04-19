@@ -8,7 +8,7 @@ window.Buffer = window.Buffer || require("buffer").Buffer;
 class App extends Component {
   state = {
     counter: 0,
-    CONTRACT_ADDRESS: 'counter1.niskarsh31.testnet',
+    CONTRACT_ADDRESS: 'counter2.niskarsh31.testnet',
     NETWORK: 'testnet',
     wallet: {},
     walletSignedIn: false,

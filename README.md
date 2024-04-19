@@ -3,6 +3,7 @@ https://niskarsh.github.io/near-counter/
 
 # Near Blockchain
 This counter lives in NEAR blockchain(TESTNET for now). Clone and test with testnet accounts or just have fun with deployed link.
+Contract address: counter2.niskarsh31.testnet
 
 # Getting Started with Create React App
 
