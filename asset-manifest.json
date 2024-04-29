@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/near-counter/static/css/main.9ddf3483.css",
-    "main.js": "/near-counter/static/js/main.ce355ead.js",
-    "static/js/453.c1f59d47.chunk.js": "/near-counter/static/js/453.c1f59d47.chunk.js",
-    "index.html": "/near-counter/index.html",
-    "main.9ddf3483.css.map": "/near-counter/static/css/main.9ddf3483.css.map",
-    "main.ce355ead.js.map": "/near-counter/static/js/main.ce355ead.js.map",
-    "453.c1f59d47.chunk.js.map": "/near-counter/static/js/453.c1f59d47.chunk.js.map"
+    "main.css": "/near-counter-reactapp/static/css/main.9ddf3483.css",
+    "main.js": "/near-counter-reactapp/static/js/main.46643fe4.js",
+    "static/js/453.c1f59d47.chunk.js": "/near-counter-reactapp/static/js/453.c1f59d47.chunk.js",
+    "index.html": "/near-counter-reactapp/index.html",
+    "main.9ddf3483.css.map": "/near-counter-reactapp/static/css/main.9ddf3483.css.map",
+    "main.46643fe4.js.map": "/near-counter-reactapp/static/js/main.46643fe4.js.map",
+    "453.c1f59d47.chunk.js.map": "/near-counter-reactapp/static/js/453.c1f59d47.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9ddf3483.css",
-    "static/js/main.ce355ead.js"
+    "static/js/main.46643fe4.js"
   ]
 }
